@@ -1,0 +1,44 @@
+
+@startuml 
+
+skinparam componentStyle rectangle
+
+package "JARVIS Core" {
+  [Speech Engine] as Speech
+  [Natural Language Understanding] as NLU
+  [Reasoning & Planning Engine] as Reasoning
+  [Memory System] as Memory
+  [Task Orchestrator] as Orchestrator
+  [Personality Engine] as Personality
+  [Safety & Ethics Guard] as Safety
+}
+
+package "Interfaces & Peripherals" {
+  [Voice I/O] as VoiceIO
+  [Visual / Holographic UI] as Visual
+  [Smart Devices & IoT] as Devices
+  [Web & External APIs] as Web
+  [Authentication Service] as Auth
+}
+
+Speech --> VoiceIO
+Speech --> NLU
+NLU --> Reasoning
+Reasoning --> Orchestrator
+Orchestrator --> Devices
+Orchestrator --> Web
+Memory <--> Reasoning
+Memory <--> Orchestrator
+Personality --> Reasoning
+Safety --> Orchestrator
+Safety --> Personality
+Safety --> Reasoning
+
+note right of Reasoning
+  Hybrid LLM + 
+  Symbolic Planner
+  Proactive Goals
+end note
+
+@enduml
+
